@@ -1,0 +1,30 @@
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE POE.csprojAssemblyReference.cache
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE_POE.Form1.resources
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE_POE.Properties.Resources.resources
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE POE.csproj.GenerateResource.cache
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE POE.csproj.CoreCompileInputs.cache
+c:\users\admin\source\repos\GADE POE\GADE POE\bin\Debug\GADE POE.exe.config
+c:\users\admin\source\repos\GADE POE\GADE POE\bin\Debug\GADE POE.exe
+c:\users\admin\source\repos\GADE POE\GADE POE\bin\Debug\GADE POE.pdb
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE POE.exe
+c:\users\admin\source\repos\GADE POE\GADE POE\obj\Debug\GADE POE.pdb
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE POE.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE_POE.Form1.resources
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE_POE.Properties.Resources.resources
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE POE.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE POE.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE POE.exe
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\obj\Debug\GADE POE.pdb
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\bin\Debug\GADE POE.exe.config
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\bin\Debug\GADE POE.exe
+C:\Users\Admin\Desktop\Task 1 memo\GADE POE\bin\Debug\GADE POE.pdb
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE POE.csprojAssemblyReference.cache
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE_POE.Form1.resources
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE_POE.Properties.Resources.resources
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE POE.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE POE.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE POE.exe
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\obj\Debug\GADE POE.pdb
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\bin\Debug\GADE POE.exe.config
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\bin\Debug\GADE POE.exe
+C:\Users\Admin\Desktop\GADE TASK 2\GADE POE\bin\Debug\GADE POE.pdb

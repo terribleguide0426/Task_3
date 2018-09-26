@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GADE POE", "GADE POE\GADE POE.csproj", "{B9A2F69B-2B3E-4538-89FF-68B1867B2DCE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B9A2F69B-2B3E-4538-89FF-68B1867B2DCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9A2F69B-2B3E-4538-89FF-68B1867B2DCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9A2F69B-2B3E-4538-89FF-68B1867B2DCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9A2F69B-2B3E-4538-89FF-68B1867B2DCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CC01ABC7-A24C-4758-9EF8-1090CBD8CD84}
+	EndGlobalSection
+EndGlobal
