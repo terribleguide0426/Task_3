@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GADE_POE
 {
+    [Serializable]
     class HeroUnit : Unit
     {
         public string name
@@ -101,11 +102,11 @@ namespace GADE_POE
         {
             if (u.GetType() == typeof(MeleeUnits))
             {
-                Health -= ((MeleeUnits)u).attack;
+                ((MeleeUnits)u).health -= attack;
             }
             else if (u.GetType() == typeof(RangedUnits))
             {
-                Health -= ((RangedUnits)u).attack;
+                ((RangedUnits)u).health -= attack;
             }
 
         }
@@ -115,7 +116,7 @@ namespace GADE_POE
             {
                 if (u.GetType() == typeof(HeroUnit))
                 {
-                    MeleeUnits M = (MeleeUnits)u;
+                    HeroUnit M = (HeroUnit)u;
                     if (DistanceTo(u) <= attackRange)
                     {
                         return true;
@@ -143,7 +144,7 @@ namespace GADE_POE
                         closestDist = DistanceTo((MeleeUnits)u);
                     }
                 }
-                if (u.GetType() == typeof(MeleeUnits))
+                 if (u.GetType() == typeof(MeleeUnits))
                 {
                     if (DistanceTo((MeleeUnits)u) < closestDist)
                     {
@@ -151,9 +152,17 @@ namespace GADE_POE
                         closestDist = DistanceTo(u);
                     }
                 }
-                else if (u.GetType() == typeof(RangedUnits))
+                 if (u.GetType() == typeof(RangedUnits))
                 {
                     if (DistanceTo((RangedUnits)u) < closestDist)
+                    {
+                        closest = u;
+                        closestDist = DistanceTo(u);
+                    }
+                }
+                if (u.GetType() == typeof(HeroUnit))
+                {
+                    if (DistanceTo((HeroUnit)u) < closestDist)
                     {
                         closest = u;
                         closestDist = DistanceTo(u);
@@ -220,9 +229,6 @@ namespace GADE_POE
             }
 
         }
-        public override void Save()
-        {
-
-        }
+       
     }
 }

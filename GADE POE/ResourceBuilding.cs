@@ -11,6 +11,7 @@ namespace GADE_POE
     [Serializable]
     class ResourceBuilding : Building
     {
+        //variables 
         private int ore;
 
         public int Ore
@@ -32,7 +33,13 @@ namespace GADE_POE
             get { return remaining; }
             set { remaining = value; }
         }
+        private int storage;
 
+        public int Storage
+        {
+            get { return storage; }
+            set { storage = value; }
+        }
 
         public int Xpos
         {
@@ -61,7 +68,7 @@ namespace GADE_POE
             set { Image = value; }
         }
 
-        public ResourceBuilding(int X_position, int Y_position, int Health, int Faction, string image, int ore, int rate)
+        public ResourceBuilding(int X_position, int Y_position, int Health, int Faction, string image, int ore, int rate,int store)
         {
             //constructor to obtain values and entries for this class
             Xpos = X_position;
@@ -72,30 +79,24 @@ namespace GADE_POE
             Ore = ore;
             Remaining = ore;
             Rate = rate;
+            storage = store;
         }
-        public override bool isDestoryed()
-        {
-            if (Health < 1)
-            {
-                return true;
-            }
-            else
-
-                return false;
-        }
+       
         public override string ToString()
         {
-            return "Resource Building:  " + Xpos + "," + Ypos + "," + Health + ",";
+            return "Resource Building:  " + Xpos + "," + Ypos + "," + Health + " ," + Ore;
         }
         public void GenResources()
         {
-          
+          //harvesting of ore to be used by lighting tower
             Remaining = Remaining - Rate;
-            
-        }
-        public override void Save()
-        {
+            storage = storage + Rate;
+            if(storage > 50)
+            {
+                storage = 0;
+            }
 
         }
+      
     }
 }

@@ -9,13 +9,7 @@ namespace GADE_POE
     [Serializable]
     class Lighting_Tower : Building
     {
-        private int power;
-
-        public int Power
-        {
-            get { return power; }
-            set { power = value; }
-        }
+    //variables
         private int attack;
 
         public int Attack
@@ -67,48 +61,38 @@ namespace GADE_POE
             health = Health;
             Fact = Faction;
             Pic = image;
-            Power = ore;
+            
             Attack = attack;
            
            
         }
-        public override bool isDestoryed()
-        {
-            if (Health < 1)
-            {
-                return true;
-            }
-            else
-
-                return false;
-        }
+       
         public override string ToString()
         {
-            return "Lighting Building:  " + Xpos + " ," + Ypos + " ," + Health + " ," + Power ; 
+            return "Lighting Building:  " + Xpos + " ," + Ypos + " ," + Health ; 
         }
         public void Combat(Unit u, Building j)
         {
-            int i = ((ResourceBuilding)j).Rate;
-            Power = Power + i;
+            //this is is where combat is done when ore reaches certian amount
+            int i = ((ResourceBuilding)j).Storage;
             
-            if (Power == 50)
+            
+            if (i >= 50)
             {
                 if (u.GetType() == typeof(MeleeUnits))
                 {
-                    Health -= ((MeleeUnits)u).attack;
+                    ((MeleeUnits)u).health -= attack;
                 }
                 else if (u.GetType() == typeof(RangedUnits))
                 {
-                    Health -= ((RangedUnits)u).attack;
+                    ((RangedUnits)u).health -= attack;
                 }
+                
             }
             
 
 
         }
-        public override void Save()
-        {
-
-        }
+      
     }
 }

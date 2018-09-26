@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace GADE_POE
 {
+    [Serializable]
     class Neutral_Enemies: Unit
     {
         public string name
@@ -71,6 +72,7 @@ namespace GADE_POE
 
         public override void NewMovePos(Direction direction)
         {
+            //movement
             switch (direction)
             {
                 case Direction.Nort:
@@ -220,9 +222,6 @@ namespace GADE_POE
             }
 
         }
-        public override void Save()
-        {
-
-        }
+       
     }
 }

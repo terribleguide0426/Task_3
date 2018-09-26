@@ -20,7 +20,7 @@ namespace GADE_POE
         int Turn = 0;
         Random r = new Random();
 
-        Map map = new Map(20, 20, 25, 15);
+        Map map = new Map(20, 20, 25, 15);//this is where map info is stored
         ResourceBuilding br;
         const int spacing = 20;
         const int Size = 20;
@@ -29,26 +29,10 @@ namespace GADE_POE
         {
             InitializeComponent();
         }
-        //Map mapForm = new Map();
+       
      
         private void Form1_Load(object sender, EventArgs e)
             {
-            //Button start = new Button();
-            //Button stop = new Button();
-
-            //start.Location = new Point(650, 350);
-            //start.Size = new Size(100, 100);
-            //start.Text = "start";
-            //this.Controls.Add(start);
-            //start.Click += new EventHandler(Button_Click);
-
-            //stop.Location = new Point(650, 450);
-            //stop.Size = new Size(100, 100);
-            //stop.Text = "stop";
-            //this.Controls.Add(stop);
-            //stop.Click += new EventHandler(Button2_Click);
-            //mapForm.CreatingMap(this);
-            //    mapForm.SpawnUnits(this);
            
 
 
@@ -66,44 +50,19 @@ namespace GADE_POE
 
         public void Button_Click(object sender, EventArgs args)
         {
-            //timer1.Start();
+          
         }
         public void Button2_Click(object sender, EventArgs args)
         {
-            //timer1.Stop();
+    
         }
-        //public void CreatingMap()
-        //{
-
-        //    int start_x = 20;
-           
-
-
-        //    for (int i = 0; i < 20; i++)
-        //    {
-        //        int start_Y = 20;
-        //        for (int m = 0; m < 20; m++)
-        //        {
-                    
-        //            pictureBoxArray[i, m] = new PictureBox();
-        //            pictureBoxArray[i, m].Size = new Size(Size, Size);
-        //            pictureBoxArray[i, m].Location = new Point(start_x  , start_Y );
-        //            pictureBoxArray[i, m].SizeMode = PictureBoxSizeMode.Zoom;
-        //            pictureBoxArray[i, m].ImageLocation = "DirtGround.jpg";
-                   
-        //            start_Y = start_Y + 20;
-
-
-        //            groupBox1.Controls.Add(pictureBoxArray[i, m]);
-        //        }
-        //        start_x = start_x + 20;
-        //    }
-
-        //}
+       
         private void DisplayMap()
         {
+            //this is where the pictureboxes are made and placed and map is displayed 
+            //this includes spawning of all units and buildings
             groupBox1.Controls.Clear();
-            //CreatingMap();
+       
             foreach (Unit u in map.Units)
             {
                 if (u != null)
@@ -292,12 +251,9 @@ namespace GADE_POE
 
                         Pbox.ImageLocation = "building1.png";
                     }
-                    if (B1.isDestoryed())
-                    {
-                        Pbox.ImageLocation = "DirtGround.jpg";
-                    }
+                 
                     groupBox1.Controls.Add(Pbox);
-                    Pbox.Click += new EventHandler(Picture_Click1);
+                    Pbox.Click += new EventHandler(Picture_Click);
                 }
 
             }
@@ -328,10 +284,7 @@ namespace GADE_POE
 
                         Pbox.ImageLocation = "tower.png";
                     }
-                    if (B1.isDestoryed())
-                    {
-                        Pbox.ImageLocation = "DirtGround.jpg";
-                    }
+                   
                     groupBox1.Controls.Add(Pbox);
                     Pbox.Click += new EventHandler(Picture_Click);
                 }
@@ -350,10 +303,7 @@ namespace GADE_POE
                     FactoryBuilding B1 = (FactoryBuilding)b;
                     PictureBox Pbox = new PictureBox();
 
-                    //if (b == null)
-                    //{
-
-                    //}
+               
 
                     Pbox.Size = new Size(Size, Size);
                     Pbox.Location = new Point(start_x + (B1.Xpos * Size), start_Y + (B1.Ypos * Size));
@@ -371,10 +321,7 @@ namespace GADE_POE
 
                         Pbox.ImageLocation = "building1.png";
                     }
-                    if (B1.isDestoryed())
-                    {
-                        Pbox.ImageLocation = "DirtGround.jpg";
-                    }
+                  
                     groupBox1.Controls.Add(Pbox);
                     Pbox.Click += new EventHandler(Picture_Click);
                 }
@@ -383,7 +330,9 @@ namespace GADE_POE
         }
         private void UpdateMap()
         {
-          
+            //movement is applied here for all units
+            //combat is also run in the update method
+            //generation and transfering methods of ore is run here
             foreach (Unit u in map.Units)
             {
                 if( u != null)
@@ -425,59 +374,87 @@ namespace GADE_POE
 
                     }
                 }
-               
-
-            }
-            foreach (Unit u in map.Units)
-            {
-                if (u != null)
+                if (u.GetType() == typeof(RangedUnits))
                 {
-                    if (u.GetType() == typeof(RangedUnits))
+                    RangedUnits m = (RangedUnits)u;
+
+                    if (m.health < 25)
                     {
-                        RangedUnits m = (RangedUnits)u;
-
-                        if (m.health < 25)
+                        switch (r.Next(0, 4))
                         {
-                            switch (r.Next(0, 4))
-                            {
-                                case 0: ((RangedUnits)u).NewMovePos(Direction.Nort); break;
-                                case 1: ((RangedUnits)u).NewMovePos(Direction.East); break;
-                                case 2: ((RangedUnits)u).NewMovePos(Direction.South); break;
-                                case 3: ((RangedUnits)u).NewMovePos(Direction.West); break;
+                            case 0: ((RangedUnits)u).NewMovePos(Direction.Nort); break;
+                            case 1: ((RangedUnits)u).NewMovePos(Direction.East); break;
+                            case 2: ((RangedUnits)u).NewMovePos(Direction.South); break;
+                            case 3: ((RangedUnits)u).NewMovePos(Direction.West); break;
 
+                        }
+                    }
+                    else
+                    {
+                        bool inCombat = false;
+                        foreach (Unit e in map.Units)
+                        {
+
+                            if (u.AttackRange(e))
+                            {
+                                u.Combat(e);
+                                inCombat = true;
                             }
                         }
-                        else
+                        if (!inCombat)
                         {
-                            bool inCombat = false;
-                            foreach (Unit e in map.Units)
-                            {
-
-                                if (u.AttackRange(e))
-                                {
-                                    u.Combat(e);
-                                    inCombat = true;
-                                }
-                            }
-                            if (!inCombat)
-                            {
-                                Unit c = u.UnitDistance(map.Units);
-                                m.NewMovePos(m.Directionto(c));
-                            }
-
+                            Unit c = u.UnitDistance(map.Units);
+                            m.NewMovePos(m.Directionto(c));
                         }
 
                     }
+
                 }
-                   
-               
+                if (u.GetType() == typeof(HeroUnit))
+                {
+                    HeroUnit m = (HeroUnit)u;
+
+                    if (m.health < 25)
+                    {
+                        switch (r.Next(0, 4))
+                        {
+                            case 0: ((HeroUnit)u).NewMovePos(Direction.Nort); break;
+                            case 1: ((HeroUnit)u).NewMovePos(Direction.East); break;
+                            case 2: ((HeroUnit)u).NewMovePos(Direction.South); break;
+                            case 3: ((HeroUnit)u).NewMovePos(Direction.West); break;
+
+                        }
+                    }
+                    else
+                    {
+                        bool inCombat = false;
+                        foreach (Unit e in map.Units)
+                        {
+
+                            if (u.AttackRange(e))
+                            {
+                                u.Combat(e);
+                                inCombat = true;
+                            }
+                        }
+                        if (!inCombat)
+                        {
+                            Unit c = u.UnitDistance(map.Units);
+                            m.NewMovePos(m.Directionto(c));
+                        }
+
+                    }
+
+                }
             }
+           
+          
             foreach (Building b in map.Buildings)
             {
                 if (b.GetType() == typeof(ResourceBuilding))
                 {
                    
-                    ((ResourceBuilding)b).isDestoryed();
+                   
                     ((ResourceBuilding)b).GenResources();
                  
                         }
@@ -490,7 +467,7 @@ namespace GADE_POE
                             
                             foreach (Unit e in map.Units)
                             {
-                                ((Lighting_Tower)b).isDestoryed();
+                                
                                 ((Lighting_Tower)b).Combat(e, b2);
                             }
 
@@ -503,11 +480,11 @@ namespace GADE_POE
         }
         public void Picture_Click(object sender, EventArgs args)
         {
-         
+         //this is where the map info is displayed in the textbox
             int x = (((PictureBox)sender).Location.X - groupBox1.Location.X) / Size;
             int Y = (((PictureBox)sender).Location.Y - groupBox1.Location.Y) / Size;
           
- //textBox2.Text = "Unit Clicked at: " + ((PictureBox)sender).Location  ;
+
             foreach (Unit u in map.Units)
             {
                
@@ -560,6 +537,14 @@ namespace GADE_POE
                 }
 
             }
+            foreach (Building b in map.Buildings)
+            {
+                if (b.GetType() == typeof(ResourceBuilding) && x == ((ResourceBuilding)b).Xpos && Y == ((ResourceBuilding)b).Ypos)
+                {
+                    textBox2.Text = ((ResourceBuilding)b).ToString();
+                }
+
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -571,24 +556,11 @@ namespace GADE_POE
         {
             timer1.Enabled = false;
         }
-        public void Picture_Click1(object sender, EventArgs args)
-        {
-            int x = (((PictureBox)sender).Location.X - groupBox1.Location.X) / Size;
-            int Y = (((PictureBox)sender).Location.Y - groupBox1.Location.Y) / Size;
-            foreach (Building b in map.Buildings)
-            {
-                if (b.GetType() == typeof(ResourceBuilding))
-                {
-                    textBox2.Text = "Resource Building: " + ((PictureBox)sender).Location + " Ore: " + ((ResourceBuilding)b).Remaining;
-                }
-                    
-            }
-                
-
-        }
+        
 
         private void button3_Click(object sender, EventArgs e)
         {
+            //save button
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fsout = new FileStream("Map.dat", FileMode.Create, FileAccess.Write, FileShare.None);
             try
@@ -607,6 +579,7 @@ namespace GADE_POE
 
         private void button4_Click(object sender, EventArgs e)
         {
+            //load button
             BinaryFormatter bf = new BinaryFormatter();
             FileStream fsin = new FileStream("Map.dat", FileMode.Open, FileAccess.Read, FileShare.None);
             try

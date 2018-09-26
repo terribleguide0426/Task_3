@@ -75,22 +75,14 @@ namespace GADE_POE
             Units = units;
             SpawnPt = spawnpt;
         }
-        public override bool isDestoryed()
-        {
-            if (Health < 1)
-            {
-                return true;
-            }
-            else
-
-                return false;
-        }
+        
         public override string ToString()
         {
             return "Factory Building:  " + Xpos + "," + Ypos + "," + Health + ",";
         }
         public Unit SpawnUnits(int maxX,int maxY)
         {
+            //spawning of units
             Random r = new Random();
             MeleeUnits m = new MeleeUnits("Tank", r.Next(0, maxX), r.Next(0, maxY), r.Next(5, 10) * 10, r.Next(5, 20), 1, 1,/* i % */2, "DirtGround.jpg");
             m.Xpos = X_position;
@@ -104,9 +96,6 @@ namespace GADE_POE
             return m;
 
         }
-        public override void Save()
-        {
-
-        }
+        
     }
 }

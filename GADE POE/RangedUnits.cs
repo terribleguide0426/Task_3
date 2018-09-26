@@ -107,11 +107,11 @@ namespace GADE_POE
         {
             if (u.GetType() == typeof(MeleeUnits))
             {
-                Health -= ((MeleeUnits)u).attack;
+                ((MeleeUnits)u).health -= attack;
             }
             else if(u.GetType() == typeof(RangedUnits))
             {
-                Health -= ((RangedUnits)u).Attack;
+                ((RangedUnits)u).health -= attack;
             }
 
         }
@@ -226,9 +226,6 @@ namespace GADE_POE
             }
 
         }
-        public override void Save()
-        {
-
-        }
+      
     }
 }

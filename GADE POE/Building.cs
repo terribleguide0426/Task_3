@@ -21,8 +21,8 @@ namespace GADE_POE
 
         public Building() { }
       
-        abstract public bool isDestoryed();
+     
         abstract public string ToString();
-        abstract public void Save();
+       
     }
 }
